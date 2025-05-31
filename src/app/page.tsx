@@ -58,7 +58,7 @@ export default function Home() {
       {data && !isPending && (
         <article className="mx-auto max-w-2xl mt-16 space-y-6">
           <NutritionOverview nutritionData={data} />
-          <article className="grid grid-cols-2 gap-3">
+          <article className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <MacroStats macroData={data.macros} />
             <MicroStats micronutrients={data.micronutrients} />
           </article>

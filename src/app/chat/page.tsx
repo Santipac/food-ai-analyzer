@@ -61,7 +61,7 @@ export default function ChatPage() {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="fixed bottom-0 w-full max-w-2xl mb-8 flex gap-2 px-4"
+          className="fixed bottom-0 w-full max-w-2xl mb-8 flex gap-2 px-8"
         >
           <Input
             className="flex-1 bg-white"

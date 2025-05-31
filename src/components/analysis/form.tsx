@@ -68,7 +68,7 @@ export default function Form({
           maxLength={144}
         />
         <Button
-          className="cursor-pointer"
+          className="cursor-pointer w-full md:w-fit"
           disabled={isPending || !input.trim()}
           onClick={handleOnClick}
         >
