@@ -32,12 +32,14 @@ export default function Home() {
             Describe your meal and get instant nutritional insights powered by
             AI. Discover calories, macros, and personalized dietary tips.
           </p>
-          <Button asChild variant="secondary">
-            <Link href="/chat">
-              <MessageCircle className="h-4 w-4 mr-2" />
-              <span> Go to chat</span>
-            </Link>
-          </Button>
+          {user && (
+            <Button asChild variant="secondary">
+              <Link href="/chat">
+                <MessageCircle className="h-4 w-4 mr-2" />
+                <span> Go to chat</span>
+              </Link>
+            </Button>
+          )}
         </div>
         {user ? (
           <Form
