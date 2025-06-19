@@ -1,49 +1,172 @@
-# Overview
+# 🥗 AI Food Nutrition Analyzer
 
-Create an app that, given a plate of food, returns an output that you choose: macros, calories, personalized tips based on the user's information, and anything else you think is relevant.
+An intelligent web application that analyzes food and provides detailed nutritional information using AI. Designed for health-conscious users who want to better understand what they eat and receive personalized advice.
 
-- The app could be web, mobile or even an API, whatever you feel the most comfortable with.
-- The input could be text/photo/audio.
-- You can structure the output schema however you want.
+## 🌟 Features
 
-## Test Criteria
+### 📊 Complete Nutritional Analysis
+- **Macronutrient analysis**: Proteins, carbohydrates, fats, and fiber
+- **Micronutrient information**: Essential vitamins and minerals
+- **Calorie counting**: Accurate estimation of caloric content
+- **Health score**: Overall food healthiness evaluation (0-100)
 
-- [ ] Document your journey while you solve the challenge. You can include decisions, tradeoffs and everything you consider that could help us understanding your process. It can be in the form of a README, a changelog, a presentation, or a simple brain-dump in a text file. It can also be a combination of those.
-- [ ] As you can see, the description doesn't get into the details of how to make the app. This is by design. The idea is that you choose how to approach it based on your strengths and how to provide the most value to the target user in the limited time that you have to develop it.
-- [ ] Treat the project as a production-ready one.
-- [ ] We expect you to spend ~4 hours on the challenge. Given the time constraint, you'll need to take some shortcuts, either in performance, edge cases, scalability, etc. Please list them in the document.
-- [ ] The ~4 hours you spend on the challenge don't need to be all at once, you can split them into multiple sessions.
-- [ ] Make sure to let us know how many hours did you end up investing and how did you split them.
-- [ ] Use TypeScript.
-- [ ] The goal is to provide value to health-conscious users who want to track macros and understand more about what they're eating. Add features relevant to this target audience.
+### 🤖 Smart Nutritional Chat  
+- Natural conversations with a virtual nutritionist
+- Personalized advice based on your profile
+- Responses in your preferred language
+- Specific recommendations according to your fitness goals
 
-## Questions?
+### 👤 Personalized Profiles
+- Basic information: age, gender, height, weight
+- Fitness objectives: weight loss, muscle gain, maintenance
+- Training frequency
+- Recommendations tailored to your profile
 
-**Email** lucas@pulso.health
+### 🛡️ Backend Protection
+- Smart rate limiting without database
+- Protection against prompt injection and malicious content
+- Multiple security layers
+- Flexible configuration for different environments
 
-**Telegram** [@ljanon](https://t.me/ljanon)
+## 🚀 Technologies & Libraries
 
-### Installation
+### Frontend
+- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+- **[React 19](https://react.dev/)** - User interface library
+- **[TypeScript](https://www.typescriptlang.org/)** - Static typing
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible and unstyled components
+- **[Lucide React](https://lucide.dev/)** - Modern SVG icons
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management
 
-First, make sure you have `pnpm` installed. Or execute this command if you don't have installed yet
+### Backend & AI
+- **[Vercel AI SDK](https://sdk.vercel.ai/)** - AI model integration
+- **[OpenAI GPT-3.5 Turbo](https://openai.com/)** - Language model for analysis and chat
+- **Next.js API Routes** - Backend endpoints
+- **Edge Runtime** - Optimized execution
 
+### Development Tools
+- **[pnpm](https://pnpm.io/)** - Fast package manager
+- **[PostCSS](https://postcss.org/)** - CSS processor
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+
+## 🛠️ Installation & Setup
+
+### Prerequisites
+- Node.js 18+ 
+- pnpm (automatically installs if you use npm)
+
+### 1. Clone the repository
 ```bash
-npm i -g pnpm
+git clone <repository-url>
+cd food-analyzer
 ```
 
-Install project's dependencies
-
+### 2. Install dependencies
 ```bash
+npm install -g pnpm  # if you don't have pnpm installed
 pnpm install
 ```
 
-You must create and .env.local file on the root of the project and copy the variables of .env.example
-If you don't have a OPEN_API API KEY ask me for it.
+### 3. Configure environment variables
+Create a `.env.local` file in the project root:
 
-Run project on local
+```env
+# Required
+OPENAI_API_KEY=your_openai_key_here
 
+# Optional - Rate Limiting (default values)
+CHAT_MAX_REQUESTS=20           # Requests per minute for chat
+NUTRITION_MAX_REQUESTS=10      # Requests per minute for analysis
+GLOBAL_MAX_REQUESTS=100        # Global requests every 5 minutes
+
+# Optional - Security
+MAX_REQUEST_SIZE=51200         # 50KB maximum per request
+MAX_MESSAGE_LENGTH=2000        # Maximum characters per message
+ENABLE_RATE_LIMITING=true      # Enable protections
+```
+
+### 4. Run in development
 ```bash
 pnpm dev
 ```
 
-### Production URL for test
+The application will be available at `http://localhost:3000`
+
+### 5. Build for production
+```bash
+pnpm build
+pnpm start
+```
+
+## 🔒 Security
+
+The project includes multiple protection layers:
+
+- **Rate Limiting**: Prevents abuse with endpoint-specific limits
+- **Content validation**: Detects prompt injection and malicious content  
+- **Size limits**: Controls request and message sizes
+- **Robust identification**: IP + User Agent for user identification
+- **Flexible configuration**: Adjust limits according to environment
+
+See complete documentation in the security configuration file.
+
+## 🏗️ Project Architecture
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # Backend endpoints
+│   │   ├── chat/          # Nutritional chat
+│   │   └── nutrition-analysis/ # Food analysis
+│   ├── chat/              # Chat page
+│   └── page.tsx           # Main page
+├── components/            # React components
+│   ├── analysis/          # Analysis components
+│   ├── chat/              # Chat components
+│   ├── onboarding/        # Profile form
+│   └── ui/                # Base components (Radix UI)
+├── lib/                   # Utilities and configuration
+│   ├── rate-limiter.ts    # Rate limiting system
+│   ├── security-middleware.ts # Security middleware
+│   ├── config.ts          # Central configuration
+│   └── utils.ts           # General utilities
+├── stores/                # Global state (Zustand)
+├── interfaces/            # TypeScript types
+└── helpers/               # Helper functions
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have ideas to improve the project:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This means you can:
+- ✅ Use the code commercially
+- ✅ Modify the code  
+- ✅ Distribute the code
+- ✅ Private use
+- ✅ Include in proprietary projects
+
+**No restrictions**. Use it however you want, learn from it, improve it, share it.
+
+---
+
+**Developed as a portfolio project to demonstrate skills in:**
+- Full-Stack development with Next.js and TypeScript
+- AI API integration (OpenAI)
+- State management and component architecture
+- Security implementation without database
+- Modern and accessible UI/UX design
+
+

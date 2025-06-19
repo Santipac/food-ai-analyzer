@@ -19,4 +19,4 @@ const state: StateCreator<UserState & UserActions> = (set) => ({
     setUser: (user: User) => set({ user })
 })
 
-export const useUserStore = create<UserState & UserActions>()(persist(state, { name: "@pulso/user" }))
+export const useUserStore = create<UserState & UserActions>()(persist(state, { name: "@aifood/user" }))
