@@ -1,6 +1,7 @@
 import { User } from '@/interfaces/user';
 import { openai } from '@ai-sdk/openai';
 import { Message, streamText } from 'ai';
+import { chatRateLimiter, globalRateLimiter, createRateLimitResponse } from '@/lib/rate-limiter';
 
 export const runtime = 'edge';
 export const maxDuration = 60;
@@ -19,15 +20,44 @@ interface ChatPayload {
 }
 
 export async function POST(req: Request) {
-    const { messages, user } = (await req.json()) as ChatPayload;
+    // Check global rate limit first
+    const globalCheck = globalRateLimiter.checkLimit(req);
+    if (!globalCheck.allowed) {
+        return createRateLimitResponse(globalCheck.resetTime);
+    }
+
+    // Check chat-specific rate limit
+    const chatCheck = chatRateLimiter.checkLimit(req);
+    if (!chatCheck.allowed) {
+        return createRateLimitResponse(chatCheck.resetTime);
+    }
+
+    try {
+        const { messages, user } = (await req.json()) as ChatPayload;
 
     const systemMessageWithUserInfo = `${conversationalNutritionistSystemPrompt} Also, you must keep in mind that the user is ${user.gender}, ${user.age} years old, ${user.height} ${user.heightUnit} tall, and weighs ${user.weight} ${user.weightUnit}. Their fitness objective is ${user.fitnessObjective}, and their training frequency is ${user.trainingFrequency}. Use this information to provide more accurate and personalized nutritional analysis and advice in your conversation.`;
 
-    const result = streamText({
-        model: openai('gpt-4o'),
-        system: systemMessageWithUserInfo,
-        messages,
-    });
+        const result = streamText({
+            model: openai('gpt-3.5-turbo'),
+            system: systemMessageWithUserInfo,
+            messages,
+        });
 
-    return result.toDataStreamResponse();
+        const response = result.toDataStreamResponse();
+        
+        // Add rate limit headers to response
+        response.headers.set('X-RateLimit-Remaining-Global', globalCheck.remaining.toString());
+        response.headers.set('X-RateLimit-Remaining-Chat', chatCheck.remaining.toString());
+        
+        return response;
+    } catch (error) {
+        console.error('Error in chat API:', error);
+        return new Response(
+            JSON.stringify({ error: 'Internal server error' }),
+            { 
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            }
+        );
+    }
 }
