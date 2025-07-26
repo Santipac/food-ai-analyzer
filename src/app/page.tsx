@@ -19,16 +19,16 @@ export default function Home() {
   const [data, setData] = useState<NutritionAnalysisResponse | null>(null);
   const [isPending, startTransition] = useTransition();
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-200 to-blue-50 p-4">
+    <section className="min-h-screen bg-gradient-to-br from-neutral-950 to-neutral-800 p-4">
       <article className="mx-auto max-w-2xl mt-16">
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-2">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Apple className="h-8 w-8 text-blue-600" />
+            <div className="p-3 bg-primary/10 rounded-full">
+              <Apple className="h-8 w-8 text-primary" />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900">NutriAnalyzer</h1>
+            <h1 className="text-4xl font-bold">NutriAnalyzer</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Describe your meal and get instant nutritional insights powered by
             AI. Discover calories, macros, and personalized dietary tips.
           </p>

@@ -15,7 +15,7 @@ interface TipsProps {
 
 export default function Tips({ tips }: TipsProps) {
   return (
-    <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+    <Card className="shadow-lg border-0 bg-neutral-900 backdrop-blur">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2">
           <Info className="h-5 w-5 text-blue-600" />

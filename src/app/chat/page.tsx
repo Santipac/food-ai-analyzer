@@ -16,7 +16,7 @@ export default function ChatPage() {
   });
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-200 to-blue-50 p-4">
+    <section className="min-h-screen bg-gradient-to-br from-neutral-950 to-neutral-800 p-4">
       <Button asChild variant="secondary">
         <Link href="/">
           <ArrowLeft className="w-4 h-4" />

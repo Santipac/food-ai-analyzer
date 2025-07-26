@@ -26,7 +26,7 @@ export default function NutritionOverview({
   const { dishName, calories, healthScore, macros } = nutritionData;
 
   return (
-    <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+    <Card className="shadow-lg border-0 bg-neutral-900 backdrop-blur">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2">
           <Zap className="h-5 w-5 text-orange-600" />
@@ -43,15 +43,15 @@ export default function NutritionOverview({
             <div className="text-4xl font-bold text-orange-600">
               {calories ?? 'N/A'}
             </div>
-            <p className="text-gray-600 font-medium">Total Calories</p>
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+            <p className="text-neutral-400 font-medium">Total Calories</p>
+            <div className="flex items-center justify-center gap-2 text-sm text-neutral-400">
               <Zap className="h-4 w-4" />
               <span>Energy Content</span>
             </div>
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="font-medium text-gray-700">Health Score</span>
+              <span className="font-medium text-neutral-400">Health Score</span>
               <Badge
                 variant="secondary"
                 className={`${getHealthScoreBg(

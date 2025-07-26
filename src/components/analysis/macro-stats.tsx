@@ -17,7 +17,7 @@ interface MacroStatsProps {
 
 export default function MacroStats({ macroData }: MacroStatsProps) {
   return (
-    <Card className="shadow-lg border-0 bg-white/80 backdrop-blur">
+    <Card className="shadow-lg border-0 bg-neutral-900 backdrop-blur">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2">
           <Target className="h-5 w-5 text-purple-600" />
@@ -29,7 +29,7 @@ export default function MacroStats({ macroData }: MacroStatsProps) {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">Protein</span>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-neutral-400">
                 {macroData.protein.grams}g ({macroData.protein.percentage}%)
               </span>
             </div>
@@ -39,7 +39,7 @@ export default function MacroStats({ macroData }: MacroStatsProps) {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">Carbohydrates</span>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-neutral-400">
                 {macroData.carbs.grams}g ({macroData.carbs.percentage}%)
               </span>
             </div>
@@ -49,7 +49,7 @@ export default function MacroStats({ macroData }: MacroStatsProps) {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-medium">Fat</span>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-neutral-400">
                 {macroData.fat.grams}g ({macroData.fat.percentage}%)
               </span>
             </div>
@@ -60,7 +60,7 @@ export default function MacroStats({ macroData }: MacroStatsProps) {
 
           <div className="flex justify-between items-center">
             <span className="font-medium">Fiber</span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-neutral-400">
               {macroData.fiber.grams}g
             </span>
           </div>
