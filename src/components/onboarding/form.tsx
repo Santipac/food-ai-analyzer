@@ -83,10 +83,10 @@ export default function OnboardingForm() {
     <section className="mt-8">
       <Card className="w-full max-w-2xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-gray-900">
+          <CardTitle className="text-3xl font-bold">
             Welcome to Your Fitness Journey
           </CardTitle>
-          <CardDescription className="text-lg text-gray-600">
+          <CardDescription className="text-lg text-neutral-400">
             Let's get to know you better to create a personalized experience
           </CardDescription>
         </CardHeader>
@@ -95,8 +95,8 @@ export default function OnboardingForm() {
             {/* Personal Information Section */}
             <div className="space-y-6">
               <div className="flex items-center gap-2">
-                <UserIcon className="h-5 w-5 text-blue-600" />
-                <h3 className="text-xl font-semibold text-gray-900">
+                <UserIcon className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold">
                   Personal Information
                 </h3>
               </div>
@@ -232,8 +232,8 @@ export default function OnboardingForm() {
             {/* Goals Section */}
             <div className="space-y-6">
               <div className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-600" />
-                <h3 className="text-xl font-semibold text-gray-900">
+                <Target className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold">
                   Your Goals
                 </h3>
               </div>
@@ -249,7 +249,7 @@ export default function OnboardingForm() {
                 >
                   <Label
                     htmlFor="gain-mass"
-                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
                     <RadioGroupItem
                       value="gain-mass"
@@ -258,14 +258,14 @@ export default function OnboardingForm() {
                     />
                     <div className="space-y-1">
                       <span className="font-medium">Gain Mass</span>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-neutral-400">
                         Build muscle and increase overall body weight
                       </p>
                     </div>
                   </Label>
                   <Label
                     htmlFor="lose-fat"
-                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
                     <RadioGroupItem
                       value="lose-fat"
@@ -274,14 +274,14 @@ export default function OnboardingForm() {
                     />
                     <div className="space-y-1">
                       <span className="font-medium">Lose Fat</span>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-neutral-400">
                         Reduce body fat and improve body composition
                       </p>
                     </div>
                   </Label>
                   <Label
                     htmlFor="longevity"
-                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
                     <RadioGroupItem
                       value="longevity"
@@ -290,7 +290,7 @@ export default function OnboardingForm() {
                     />
                     <div className="space-y-1">
                       <span className="font-medium">Longevity</span>
-                      <p className="text-sm text-gray-600">
+                        <p className="text-sm text-neutral-400">
                         Focus on long-term health and wellness
                       </p>
                     </div>
